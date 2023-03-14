@@ -23,7 +23,7 @@ Script to send multiple emails attached with resume
 
 11. Click "Create" to generate your client ID and secret.
 
-12 .Download the JSON file containing your client ID and secret by clicking the "Download" button on the right side of your client ID entry in the "OAuth 2.0 Client IDs" section of the Credentials page.
+12. Download the JSON file containing your client ID and secret by clicking the "Download" button on the right side of your client ID entry in the "OAuth 2.0 Client IDs" section of the Credentials page.
 
 13. Move the downloaded JSON file to the same directory as your Python script and rename it to "client_secret.json". You can make a new folder as well.
 
