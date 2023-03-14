@@ -13,7 +13,7 @@ from email.mime.application import MIMEApplication
 
 
 """
-1. Run "pip/pip3 install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client" to install all requirements.
+1. Run "pip3 install -r requirements.txt" to install all requirements globally or in a virtual environment.
 
 2. To set up your Google Cloud Platform account and enable the Gmail API, follow these steps: Go to the Google Cloud Console at https://console.cloud.google.com/ and sign in to your Google account.
 

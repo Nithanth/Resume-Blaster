@@ -5,3 +5,6 @@ secrets_vault.py
 # ignore test materials
 *.pdf
 *.csv
+
+#ignore virtual environment
+/env
