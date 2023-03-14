@@ -1,7 +1,7 @@
 # Resume Blaster
 Resume Blaster is a program to mass send emails attached with a resume to individuals at companies you want to reach out to. To use this prgogram, make sure you have a valid email address, a school/work resume, and a CSV file with columns "Company Name", "Recipient's Name", "Email Address" which contains all the respective contact information of the individuals you want to reach out to
 
-1. Run "pip/pip3 install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client" in your terminal to install all requirements.
+1. Run "pip3 install -r requirements.txt" to install all requirements globally or in a virtual environment.
 
 2. To set up your Google Cloud Platform account and enable the Gmail API, follow these steps: Go to the Google Cloud Console at https://console.cloud.google.com/ and sign in to your Google account.
 
