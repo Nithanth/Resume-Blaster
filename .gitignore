@@ -1,0 +1,7 @@
+# ignore all files with credentials info
+*.json
+secrets_vault.py
+
+# ignore test materials
+*.pdf
+*.csv
