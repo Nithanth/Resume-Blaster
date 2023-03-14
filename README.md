@@ -1,4 +1,4 @@
-# Resume-Blaster
+# Resume Blaster
 Script to send multiple emails attached with resume 
 
 1. Run "pip/pip3 install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client" to install all requirements.
