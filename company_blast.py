@@ -10,6 +10,8 @@ from googleapiclient.discovery import build
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
+from datetime import datetime
+
 
 
 """
@@ -48,17 +50,17 @@ CLIENT_ID = secrets_vault.CLIENT_ID
 CLIENT_SECRET = secrets_vault.CLIENT_SECRET
 REDIRECT_URI = secrets_vault.REDIRECT_URI
 # 'your email address'
-MY_EMAIL = ''
+MY_EMAIL = 'nithanth.ram@gmail.com'
 # 'Your full name'
-MY_NAME = ''
+MY_NAME = 'Nithanth Ram'
 # 'filepath to csv of recruiter information'
-CSV_FILEPATH = ''
+CSV_FILEPATH = 'companyblastertest.csv'
 # 'subject of email'
-SUBJECT = ''
+SUBJECT = 'Test'
 # body of email - Ex. 'Dear [FIRST NAME],\n\nI am writing to express my interest in the Software Engineering position at [COMPANY NAME].\n\nPlease find attached my resume.\n\nBest regards,\n[YOUR NAME]'
-BODY = ''
+BODY = 'Test123'
 # 'filepath to resume/other attachment'
-ATTACHMENT_FILEPATH = ''
+ATTACHMENT_FILEPATH = 'companyblasterresumetest.pdf'
 
 def get_gmail_service():
     """Authorize and create a Gmail API service object."""
@@ -80,9 +82,12 @@ def get_gmail_service():
         code = input('Enter the authorization code: ')
         flow.fetch_token(code=code)
         creds = flow.credentials
-        
+        creds_json = creds.to_json()
+
         with open(token_path, 'w') as token_file:
-            json.dump(creds.to_json(), token_file)
+            # json.dump(creds.to_json(), token_file, indent=4)
+            token_file.write(creds_json)
+
     
     service = build('gmail', 'v1', credentials=creds)
     return service
@@ -103,6 +108,10 @@ def create_message_with_attachment(to, subject, body, file_path):
 
     # Return the message content as a dictionary with base64 encoded raw data
     return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+
+# def datetime_to_str(dt):
+#     """Converts datetime object to string."""
+#     return dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
 def main():
     # Start the Gmail API service 
