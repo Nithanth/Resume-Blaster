@@ -13,7 +13,6 @@ from email.mime.application import MIMEApplication
 from datetime import datetime
 
 
-
 """
 1. Run "pip3 install -r requirements.txt" to install all requirements globally or in a virtual environment.
 
@@ -85,7 +84,6 @@ def get_gmail_service():
         creds_json = creds.to_json()
 
         with open(token_path, 'w') as token_file:
-            # json.dump(creds.to_json(), token_file, indent=4)
             token_file.write(creds_json)
 
     
@@ -108,10 +106,6 @@ def create_message_with_attachment(to, subject, body, file_path):
 
     # Return the message content as a dictionary with base64 encoded raw data
     return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-
-# def datetime_to_str(dt):
-#     """Converts datetime object to string."""
-#     return dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
 def main():
     # Start the Gmail API service 
