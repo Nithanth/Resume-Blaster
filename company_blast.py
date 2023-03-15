@@ -48,17 +48,17 @@ CLIENT_ID = secrets_vault.CLIENT_ID
 CLIENT_SECRET = secrets_vault.CLIENT_SECRET
 REDIRECT_URI = secrets_vault.REDIRECT_URI
 # 'your email address'
-MY_EMAIL = ''
+MY_EMAIL = secrets_vault.MY_EMAIL
 # 'Your full name'
-MY_NAME = ''
+MY_NAME = secrets_vault.MY_NAME
 # 'filepath to csv of recruiter information'
-CSV_FILEPATH = ''
+CSV_FILEPATH = secrets_vault.CSV_FILEPATH
 # 'subject of email'
-SUBJECT = ''
+SUBJECT = secrets_vault.SUBJECT
 # body of email - Ex. 'Dear [FIRST NAME],\n\nI am writing to express my interest in the Software Engineering position at [COMPANY NAME].\n\nPlease find attached my resume.\n\nBest regards,\n[YOUR NAME]'
-BODY = ''
+BODY = secrets_vault.BODY
 # 'filepath to resume/other attachment'
-ATTACHMENT_FILEPATH = ''
+ATTACHMENT_FILEPATH = secrets_vault.ATTACHMENT_FILEPATH
 
 def get_gmail_service():
     """Authorize and create a Gmail API service object."""
