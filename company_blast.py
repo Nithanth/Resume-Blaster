@@ -10,7 +10,7 @@ from googleapiclient.discovery import build
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
-from datetime import datetime
+
 
 
 """
@@ -36,7 +36,7 @@ from datetime import datetime
 
 11. Click "Create" to generate your client ID and secret.
 
-12 .Download the JSON file containing your client ID and secret by clicking the "Download" button on the right side of your client ID entry in the "OAuth 2.0 Client IDs" section of the Credentials page.
+12. Download the JSON file containing your client ID and secret by clicking the "Download" button on the right side of your client ID entry in the "OAuth 2.0 Client IDs" section of the Credentials page.
 
 13. Move the downloaded JSON file to the same directory as your Python script and rename it to "client_secret.json". You can make a new folder as well.
 
@@ -49,15 +49,16 @@ CLIENT_ID = secrets_vault.CLIENT_ID
 CLIENT_SECRET = secrets_vault.CLIENT_SECRET
 REDIRECT_URI = secrets_vault.REDIRECT_URI
 # 'your email address'
-MY_EMAIL = 'nithanth.ram@gmail.com'
+MY_EMAIL = secrets_vault.EMAIL_ADDRESS
 # 'Your full name'
-MY_NAME = 'Nithanth Ram'
+MY_FIRST_NAME = secrets_vault.FIRST_NAME
+MY_LAST_NAME = secrets_vault.LAST_NAME
 # 'filepath to csv of recruiter information'
 CSV_FILEPATH = 'companyblastertest.csv'
 # 'subject of email'
 SUBJECT = 'Test'
 # body of email - Ex. 'Dear [FIRST NAME],\n\nI am writing to express my interest in the Software Engineering position at [COMPANY NAME].\n\nPlease find attached my resume.\n\nBest regards,\n[YOUR NAME]'
-BODY = 'Test123'
+BODY = 'Test 123'
 # 'filepath to resume/other attachment'
 ATTACHMENT_FILEPATH = 'companyblasterresumetest.pdf'
 
@@ -123,7 +124,7 @@ def main():
             # Construct the "To" field for the email
             to = f'{name} <{email}>'
             # Replace the placeholders in the body of the email with actual values
-            body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', MY_NAME)
+            body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', f"{MY_FIRST_NAME} {MY_LAST_NAME}")
             # Create the message object with the attachment
             message = create_message_with_attachment(to, SUBJECT, body, ATTACHMENT_FILEPATH)
             try:
