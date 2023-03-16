@@ -51,16 +51,15 @@ REDIRECT_URI = secrets_vault.REDIRECT_URI
 # 'your email address'
 MY_EMAIL = secrets_vault.EMAIL_ADDRESS
 # 'Your full name'
-MY_FIRST_NAME = secrets_vault.FIRST_NAME
-MY_LAST_NAME = secrets_vault.LAST_NAME
+MY_NAME = f"{secrets_vault.FIRST_NAME} {secrets_vault.LAST_NAME}"
 # 'filepath to csv of recruiter information'
-CSV_FILEPATH = 'companyblastertest.csv'
+CSV_FILEPATH = secrets_vault.CSV_FILEPATH
 # 'subject of email'
-SUBJECT = 'Test'
+SUBJECT = 'test'
 # body of email - Ex. 'Dear [FIRST NAME],\n\nI am writing to express my interest in the Software Engineering position at [COMPANY NAME].\n\nPlease find attached my resume.\n\nBest regards,\n[YOUR NAME]'
-BODY = 'Test 123'
+BODY = 'Test123'
 # 'filepath to resume/other attachment'
-ATTACHMENT_FILEPATH = 'companyblasterresumetest.pdf'
+ATTACHMENT_FILEPATH = secrets_vault.ATTACHMENT_FILEPATH
 
 def get_gmail_service():
     """Authorize and create a Gmail API service object."""
@@ -124,7 +123,7 @@ def main():
             # Construct the "To" field for the email
             to = f'{name} <{email}>'
             # Replace the placeholders in the body of the email with actual values
-            body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', f"{MY_FIRST_NAME} {MY_LAST_NAME}")
+            body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', MY_NAME)
             # Create the message object with the attachment
             message = create_message_with_attachment(to, SUBJECT, body, ATTACHMENT_FILEPATH)
             try:
