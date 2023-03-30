@@ -59,7 +59,7 @@ SUBJECT = 'test'
 # body of email - Ex. 'Dear [FIRST NAME],\n\nI am writing to express my interest in the Software Engineering position at [COMPANY NAME].\n\nPlease find attached my resume.\n\nBest regards,\n[YOUR NAME]'
 BODY = 'Test123'
 # 'filepath to resume/other attachment'
-ATTACHMENT_FILEPATH = secrets_vault.ATTACHMENT_FILEPATH
+ATTACHMENT_FILEPATH = secrets_vault.RESUME_FILEPATH
 
 def get_gmail_service():
     """Authorize and create a Gmail API service object."""
@@ -123,7 +123,10 @@ def main():
             # Construct the "To" field for the email
             to = f'{name} <{email}>'
             # Replace the placeholders in the body of the email with actual values
-            body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', MY_NAME)
+            if company_name in secrets_vault.CUSTOM_BODIES:
+                body = secrets_vault.CUSTOM_BODIES[company_name]
+            else:
+                body = BODY.replace('[COMPANY NAME]', company_name).replace('[FIRST NAME]', name).replace('[YOUR NAME]', MY_NAME)
             # Create the message object with the attachment
             message = create_message_with_attachment(to, SUBJECT, body, ATTACHMENT_FILEPATH)
             try:
